@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const Band = require('./app/models/band');
+const Band = require('./app/models/band').band;
+const Member = require('./app/models/band').member;
 
 mongoose.connect('mongodb://localhost:27017/bands', {useNewUrlParser: true});
 
@@ -34,6 +35,7 @@ router.get('/',function(req,res){
  .post(function(req, res) {
    var band = new Band()
    band.name = req.body.name
+   // band.members = req.body.members
    band.save(function(err) {
      if (err)
       res.send(err)
@@ -87,8 +89,29 @@ router.route('/bands/:band_id')
     })
   })
 
+router.route('/bands/:band_id/members')
 
+  .post(function(req, res) {
+    Band.findById(req.params.band_id, function(err, band) {
+      var member = new Member()
+      member.band = band._id
+        member.name = req.body.name
 
+        band.members.push(member);
+
+        band.save(function(err) {
+          if (err)
+            res.send(err)
+          })
+        member.save(function(err) {
+          if (err)
+            res.send(err)
+            res.json({
+              message: "Member Created/Band updated"
+        })
+    })
+  })
+} )
 app.use('/api', router)
 
 app.listen(port)
