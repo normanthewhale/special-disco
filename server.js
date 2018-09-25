@@ -92,9 +92,8 @@ router.route('/bands/:band_id')
 router.route('/bands/:band_id/members')
 
   .post(function(req, res) {
-    Band.findById(req.params.band_id, function(err, band) {
       var member = new Member()
-      member.band = band._id
+      member.band = band
         member.name = req.body.name
 
         band.members.push(member);
@@ -111,7 +110,17 @@ router.route('/bands/:band_id/members')
         })
     })
   })
-} )
+
+
+router.route('/members')
+  .get(function(req, res) {
+    Member.find(function(err, members) {
+      if (err)
+        res.send(err)
+      res.json(members)
+    })
+  })
+
 app.use('/api', router)
 
 app.listen(port)
