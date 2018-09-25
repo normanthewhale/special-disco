@@ -114,7 +114,11 @@ router.route('/bands/:band_id/members')
   Band.findById(req.params.band_id, function(err, band) {
     if (err)
       res.send(err)
-      res.json(band.members)
+      // res.json(band.members)
+   }) .populate('members', 'name').exec(function(err, band){
+     if (err)
+      res.send(err)
+    res.json(band.members)
    })
 })
 
