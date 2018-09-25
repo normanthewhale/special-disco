@@ -51,6 +51,16 @@ router.get('/',function(req,res){
   })
 })
 
+router.route('/bands/:band_id')
+
+.get(function(req, res) {
+  Band.findById(req.params.band_id, function(err, band) {
+    if (err)
+      res.send(err)
+    res.json(band)
+  })
+})
+
 app.use('/api', router)
 
 app.listen(port)
