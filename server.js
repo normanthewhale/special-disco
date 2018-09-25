@@ -1,0 +1,47 @@
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const Band = require('./app/models/band');
+
+mongoose.connect('mongodb://localhost:27017/bands', {useNewUrlParser: true});
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.use(bodyParser.json());
+
+const port = process.env.PORT || 8080;
+
+const router = express.Router();
+
+//middleware
+router.use(function(req,res,next){
+  console.log("something is happening");
+  next();
+})
+
+router.get('/',function(req,res){
+  res.json({
+    message:"welcome to the best api"
+  })
+})
+
+ //routes for api
+ router.route('/bands')
+ .post(function(req, res) {
+   var band = new Band()
+   band.name = req.body.name
+   band.save(function(err) {
+     if (err)
+      res.send(err)
+    res.json({
+      message: "band created"
+    })
+    })
+ })
+app.use('/api', router)
+
+app.listen(port)
+console.log('Magic happens on port' + port)
