@@ -60,6 +60,34 @@ router.route('/bands/:band_id')
     res.json(band)
   })
 })
+ .put(function(req, res) {
+   Band.findById(req.params.band_id, function(err, band) {
+     if (err)
+       res.send(err)
+    band.name = req.body.name
+
+    band.save(function(err) {
+      if (err)
+        res.send(err)
+      res.json({
+        message: "band updated"
+    })
+   })
+ })
+})
+  .delete(function(req, res) {
+    Band.remove({
+      _id:req.params.band_id},
+      function(err, band) {
+      if (err)
+        res.send(err)
+      res.json({
+        message: "band deleted"
+      })
+    })
+  })
+
+
 
 app.use('/api', router)
 
