@@ -131,6 +131,24 @@ router.route('/members')
     })
   })
 
+router.route('/members/:member_id')
+
+.put(function(req, res) {
+  Member.findById(req.params.member_id, function(err, member) {
+    if (err)
+      res.send(err)
+   member.name = req.body.name
+
+   member.save(function(err) {
+     if (err)
+       res.send(err)
+     res.json({
+       message: "member updated"
+   })
+  })
+})
+})
+
 app.use('/api', router)
 
 app.listen(port)
