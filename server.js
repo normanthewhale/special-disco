@@ -30,6 +30,7 @@ router.get('/',function(req,res){
 
  //routes for api
  router.route('/bands')
+
  .post(function(req, res) {
    var band = new Band()
    band.name = req.body.name
@@ -41,6 +42,15 @@ router.get('/',function(req,res){
     })
     })
  })
+
+.get(function(req, res) {
+  Band.find(function(err, bands) {
+    if (err)
+      res.send(err)
+    res.json(bands)
+  })
+})
+
 app.use('/api', router)
 
 app.listen(port)
