@@ -91,7 +91,7 @@ router.route('/bands/:band_id')
   .delete(function(req, res) {
     Band.remove({
       _id:req.params.band_id},
-      function(err, band) {
+      function(err) {
       if (err)
         res.send(err)
       res.json({
@@ -102,7 +102,7 @@ router.route('/bands/:band_id')
 
 // see band members of a specific band
 router.route('/bands/:band_id/members')
-//add band member to a specific band
+// add band member to a specific band
   .post(function(req, res) {
       var member = new Member()
       member.band = band
@@ -165,8 +165,47 @@ router.route('/members/:member_id')
 })
 })
 //add delete function for specific member
-//====================================
+// .delete(function(req, res) {
+//   // Band.findById(Member.band)
+//   Member.remove({
+//     _id:req.params.member_id
+//   }, function(err, member) {
+//     if (err)
+//       res.send(err)
+//     console.log(member)
+//     res.json ({
+//       message: "member deleted"
+//     })
+//   })
+// })
 
+router.route('/delete/:band_id/:member_id')
+  .delete(function(req, res) {
+    // Member.findById(req.params.member_id, function(err, member){
+    //   console.log(member._id)
+    // })
+    Band.findById(req.params.band_id, function(err, band){
+      for (let i = 0; i < band.members.length; i++) {
+        if (band.members[i] == req.params.member_id){
+          band.members.splice(i, 1)
+          console.log(band.members)
+        }
+      }
+        band.save(function(err) {
+          if (err)
+            res.send(err)
+      })
+    })
+    Member.remove({
+        _id:req.params.member_id
+      }, function(err) {
+        if (err)
+          res.send(err)
+        res.json ({
+          message: "member deleted/band members updated"
+        })
+      })
+ })
 //====================================
 //end of middleware
 app.use('/api', router)
