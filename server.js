@@ -187,7 +187,7 @@ router.route('/members/:member_id')
 //     })
 //   })
 // })
-
+//Delete a member from a band.
 router.route('/delete/:band_id/:member_id')
   .delete(function(req, res) {
     // Member.findById(req.params.member_id, function(err, member){
