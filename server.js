@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
 
 mongoose.connect('mongodb://localhost:27017/bands', {
   useNewUrlParser: true
@@ -11,7 +12,7 @@ mongoose.connect('mongodb://localhost:27017/bands', {
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-
+app.use( express.static( path.join( __dirname, 'public' ) ) )
 app.use(bodyParser.json());
 
 const port = process.env.PORT || 8080;
