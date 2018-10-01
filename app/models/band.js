@@ -10,7 +10,7 @@ const BandSchema = new Schema( {
 	albums: [],
 	genre: String,
 	origin: String,
-	years_active: String
+	years_active: String,
 	rating: Number
 } )
 
