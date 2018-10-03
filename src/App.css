@@ -75,3 +75,15 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+.logo {
+  display: block;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  border-color: white;
+  border-style: solid;
+  background-color: red;
+
+}
