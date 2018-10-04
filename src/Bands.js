@@ -1,32 +1,37 @@
 import React, { Component } from 'react';
 import './App.css';
-import 'typeface-roboto'
+import 'typeface-roboto';
+import List from './Components/List'
 
 class Bands extends Component {
-constructor() {
-	super();
-	this.state={data: null};
+	constructor() {
+		super();
+		this.state={data: null};
 }
 	componentDidMount() {
-					this
-							.callApi()
-							.then( res => {this.setState( { data: res.express } ); console.log(data) })
-							.catch( err => console.log( err ) );
+		this.callApi()
+			.then( res => {this.setState( { data: res } );
+			 console.log(res);
+			 	console.log(this.state.data) })
+			.catch( err => console.log( err ) );
 			}
 
-			callApi = async () => {
-					const response = await fetch( '/api/bands' );
-					const body = await response.json();
+	callApi = async () => {
+		const response = await fetch( '/api/bands' );
+		const body = await response.json();
 
-					if ( response.status !== 200 )
-							throw Error( body.message );
-					return body;
+		if ( response.status !== 200 )
+			throw Error( body.message );
+		return body;
 			};
 
-	render() {
-		return ( <div className="App">
+getInfo = () => {
+	return this.state.data.map(band => <List name={band.name}/> )
+}
 
-			<h1>We are here to help</h1>
+render() {
+	return ( <div className="App">
+			{this.getInfo()}
 			</div> );
 	}
 }
