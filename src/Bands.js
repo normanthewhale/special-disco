@@ -31,16 +31,18 @@ class Bands extends Component {
 		return body;
 	};
 
-	getInfo = ( band ) => {
-		console.log( band );
+	getInfo( e ) {
+		console.log( e.currentTarget.id );
+		// console.log( this.target );
 	}
+
 	getList = () => {
 		if ( this.state.data != null ) {
 			return this
 				.state
 				.data
 				.map( band => {
-					return <List key={band.name} band={band} name={band.name} onClick={this.getInfo}/>;
+					return <List key={band.name} id={band._id} name={band.name} onClick={this.getInfo}/>;
 				} )
 		};
 	}

@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 
 class List extends Component {
-	constructor( props ) {
-		super( props );
-	}
 	render() {
-		console.log( this.props );
 		return (< h1 onClick = {
-			( e ) => this
-				.props
-				.onClick( e )
+			this.props.onClick
 		}
-		band = {
-			this.props.band
+		id = {
+			this.props.id
 		} > {
 			this.props.name
 		} < /h1>
