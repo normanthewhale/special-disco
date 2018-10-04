@@ -1,9 +1,15 @@
-import React from 'react';
-import Landing from '../Landing';
-import Bands from '../Bands';
+import React, { Component } from "react";
+import Bands from "../Bands";
 import Artist from "../Artist";
-import Submit from '../Submit';
-import Help from '../Help';
+import Submit from "../Submit";
+import Help from "../Help";
+import Landing from "../Landing";
+// import Route from 'react-router';
+import {
+	Redirect,
+  Route,
+  Switch
+} from 'react-router-dom';
 
 class MainComponent extends Component {
 
@@ -21,3 +27,4 @@ class MainComponent extends Component {
 		</div> );
 	}
 }
+export default MainComponent;
