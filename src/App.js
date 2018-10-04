@@ -7,10 +7,9 @@ import MainComponent from './Components/MainComponent'
 class App extends Component {
 
 	render() {
-		return (
-			<div className="App">
-				<BandAppBar />
-			<MainComponent />
+		return ( <div className="App">
+			<BandAppBar/>
+			<MainComponent/>
 		</div> );
 	}
 }

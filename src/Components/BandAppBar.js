@@ -29,8 +29,7 @@ class BandAppBar extends Component {
 					<Input placeholder="Search..." disableUnderline={true}/>
 				</Toolbar>
 			</AppBar>
-		</div>
-			);
+		</div> );
 	}
 }
 

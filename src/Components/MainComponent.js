@@ -5,11 +5,7 @@ import Submit from "../Submit";
 import Help from "../Help";
 import Landing from "../Landing";
 // import Route from 'react-router';
-import {
-	Redirect,
-  Route,
-  Switch
-} from 'react-router-dom';
+import { Redirect, Route, Switch, } from 'react-router-dom';
 
 class MainComponent extends Component {
 

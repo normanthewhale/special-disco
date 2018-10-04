@@ -92,7 +92,7 @@ module.exports = function ( router ) {
 					
 					//get more information about members in the band
 				} )
-				.populate( 'albums', 'members', 'name' )
+				.populate( 'members', 'name' )
 				.exec( function ( err, band ) {
 					message( err, res, band.members )
 				} )

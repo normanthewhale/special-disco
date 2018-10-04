@@ -17,7 +17,7 @@ class Help extends Component {
 		const response = await fetch( '/api' );
 		const body = await response.json();
 
-		if ( response.status !== 200 )
+		if ( response.status !== 200 ) 
 			throw Error( body.message );
 		return body;
 	};
@@ -25,7 +25,7 @@ class Help extends Component {
 		return ( <div className="App">
 
 			<h1>We are here to help</h1>
-			</div> );
+		</div> );
 	}
 }
 
