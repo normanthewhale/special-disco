@@ -7,16 +7,17 @@ class Bands extends Component {
 	constructor() {
 		super();
 		this.state = {
-			data: null
+			data: null,
+			isLoading: false,
 		};
 	}
 	componentDidMount() {
 		this
 			.callApi()
 			.then( res => {
-				this.setState( { data: res } );
+				this.setState( { data: res, isLoading: false } );
 				console.log( res );
-				console.log( this.state.data )
+				console.log( this.state.data );
 			} )
 			.catch( err => console.log( err ) );
 	}
@@ -30,16 +31,23 @@ class Bands extends Component {
 		return body;
 	};
 
-	getInfo = () => {
-		return this
-			.state
-			.data
-			.map( band => <List name={band.name}/> )
+	getInfo = ( band ) => {
+		console.log( band );
+	}
+	getList = () => {
+		if ( this.state.data != null ) {
+			return this
+				.state
+				.data
+				.map( band => {
+					return <List key={band.name} band={band} name={band.name} onClick={this.getInfo}/>;
+				} )
+		};
 	}
 
 	render() {
 		return ( <div className="App">
-			{this.getInfo()}
+			{this.getList()}
 		</div> );
 	}
 }

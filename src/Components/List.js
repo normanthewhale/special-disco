@@ -5,7 +5,15 @@ class List extends Component {
 		super( props );
 	}
 	render() {
-		return (< h1 > {
+		console.log( this.props );
+		return (< h1 onClick = {
+			( e ) => this
+				.props
+				.onClick( e )
+		}
+		band = {
+			this.props.band
+		} > {
 			this.props.name
 		} < /h1>
 		)
