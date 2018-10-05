@@ -2,21 +2,20 @@ import React, { Component } from 'react';
 import './App.css';
 import 'typeface-roboto';
 import ListItem from './Components/ListItem';
-import GetInfo from './Components/GetInfo';
 
 class Bands extends Component {
 	constructor() {
 		super();
 		this.state = {
 			data: null,
-			isLoading: false,
+			isLoading: false
 		};
 	}
 	componentDidMount() {
 		this
 			.callApi()
 			.then( res => {
-				this.setState( { data: res, isLoading: false } );
+				this.setState( { data: res, isLoading: false, } );
 			} )
 			.catch( err => console.log( err ) );
 	}
@@ -36,7 +35,7 @@ class Bands extends Component {
 				.state
 				.data
 				.map( band => {
-					return <ListItem key={band.name} className="list" name={band.name} to={`${ band._id }`}/>;
+					return <ListItem key={band._id} className="list" name={band.name} to={`/bands/${ band._id }`}/>;
 				} )
 		};
 	}

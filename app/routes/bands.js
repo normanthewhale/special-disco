@@ -8,6 +8,7 @@ module.exports = function ( router ) {
 		.route( '/bands' )
 		// add band
 		.post( function ( req, res ) {
+			console.log( req, "this is a log" )
 			var band = new Band()
 			band.name = req.body.name
 			// band.members = req.body.members

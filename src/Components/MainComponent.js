@@ -6,7 +6,7 @@ import Help from "../Help";
 import Landing from "../Landing";
 import GetInfo from "./GetInfo";
 // import Route from 'react-router';
-import { Redirect, Route, Switch, } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 class MainComponent extends Component {
 
@@ -14,12 +14,12 @@ class MainComponent extends Component {
 
 		return ( <div className="App-intro">
 			<Switch>
-				<Route exact="exact" path="/" component={Landing}/>
-				<Route path="/bands" component={Bands}/>
-				<Route path="/:id" component={GetInfo}/>
+				<Route exact={true} path="/" component={Landing}/>
+				<Route exact={true} path="/bands" component={Bands}/>
 				<Route path="/artist" component={Artist}/>
-				<Route path="/submitInfo" component={Submit}/>
+				<Route path="/submit" component={Submit}/>
 				<Route path="/help" component={Help}/>
+				<Route path="/bands/:id" component={GetInfo}/>
 
 				<Redirect to="/"/>
 			</Switch>

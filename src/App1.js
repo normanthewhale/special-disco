@@ -69,7 +69,7 @@ class App extends Component {
 							<CardActionArea>
 								<CardMedia style={{
 										height: 0,
-										paddingTop: '56%'
+										paddingTop: '56%',
 									}} className="media" image={pics.badplus} title="The Bad Plus"/>
 								<CardContent>
 									<Typography gutterBottom={false} variant="headline" component="h2">

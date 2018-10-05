@@ -22,7 +22,7 @@ class BandAppBar extends Component {
 
 					<Button className="Nav-btn" color="inherit" to="/bands" component={Link}>Bands</Button>
 					<Button className="Nav-btn" color="inherit" to="/artist" component={Link}>Artist</Button>
-					<Button className="Nav-btn" color="inherit" to="/submitInfo" component={Link}>Submit Info</Button>
+					<Button className="Nav-btn" color="inherit" to="/submit" component={Link}>Submit Info</Button>
 					<Button className="Nav-btn-help" color="inherit" to="/help" component={Link}>Help</Button>
 					<SearchIcon/>
 					<Input placeholder="Search..." disableUnderline={true}/>
