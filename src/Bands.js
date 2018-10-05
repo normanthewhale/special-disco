@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'typeface-roboto';
-import List from './Components/List'
+import ListItem from './Components/ListItem';
+import GetInfo from './Components/GetInfo';
 
 class Bands extends Component {
 	constructor() {
@@ -16,8 +17,6 @@ class Bands extends Component {
 			.callApi()
 			.then( res => {
 				this.setState( { data: res, isLoading: false } );
-				console.log( res );
-				console.log( this.state.data );
 			} )
 			.catch( err => console.log( err ) );
 	}
@@ -31,18 +30,13 @@ class Bands extends Component {
 		return body;
 	};
 
-	getInfo( e ) {
-		console.log( e.currentTarget.id );
-		// console.log( this.target );
-	}
-
 	getList = () => {
 		if ( this.state.data != null ) {
 			return this
 				.state
 				.data
 				.map( band => {
-					return <List key={band.name} id={band._id} name={band.name} onClick={this.getInfo}/>;
+					return <ListItem key={band.name} className="list" name={band.name} to={`${ band._id }`}/>;
 				} )
 		};
 	}

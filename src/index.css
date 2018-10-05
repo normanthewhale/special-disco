@@ -4,6 +4,9 @@ body {
   font-family: sans-serif;
 }
 
-h1 {
+.list {
+  font-size: 40px;
   color: white;
+  margin: 2%;
+
 }

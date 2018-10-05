@@ -4,8 +4,9 @@ import Artist from "../Artist";
 import Submit from "../Submit";
 import Help from "../Help";
 import Landing from "../Landing";
+import GetInfo from "./GetInfo";
 // import Route from 'react-router';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch, } from 'react-router-dom';
 
 class MainComponent extends Component {
 
@@ -15,6 +16,7 @@ class MainComponent extends Component {
 			<Switch>
 				<Route exact="exact" path="/" component={Landing}/>
 				<Route path="/bands" component={Bands}/>
+				<Route path="/:id" component={GetInfo}/>
 				<Route path="/artist" component={Artist}/>
 				<Route path="/submitInfo" component={Submit}/>
 				<Route path="/help" component={Help}/>

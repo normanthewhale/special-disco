@@ -14,10 +14,9 @@ class BandAppBar extends Component {
 	render() {
 
 		return ( <div>
-			<router></router>
 			<AppBar position="static" color="default" title="Bandbase">
 				<Toolbar>
-					<Typography variant="title" color="inherit" gutterBottom={false}>
+					<Typography variant="title" color="inherit" gutterBottom={false} to="/" component={Link}>
 						Bandbase
 					</Typography>
 
